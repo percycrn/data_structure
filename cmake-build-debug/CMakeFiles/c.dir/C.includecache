@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/e/c/linkedList.c
-stdlib.h
--
+/cygdrive/e/c/exp3/BinaryTree.c
 stdio.h
-/cygdrive/e/c/stdio.h
+/cygdrive/e/c/exp3/stdio.h
+stdlib.h
+/cygdrive/e/c/exp3/stdlib.h
 

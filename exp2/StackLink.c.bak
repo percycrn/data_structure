@@ -1,0 +1,120 @@
+//
+// Created by percycrn on 2018/3/26.
+//
+#include <stdlib.h>
+#include "stdio.h"
+
+// stack data structure
+typedef struct StackNode {
+    int item;
+    struct StackNode *next;
+} StackNode, *LinkedStack;
+
+/** initialize the stack
+ *
+ * @param stack
+ * @return {@code 1} if the function works well
+ */
+int initList(LinkedStack *top) {
+    *top = (LinkedStack) malloc(sizeof(StackNode));
+    if (*top == NULL) {
+        printf("fail to initialize the link stack");
+        return 0;
+    }
+    (*top)->next = NULL;
+    return 1;
+}
+
+/** judge whether the Stack is empty or not
+ *
+ * @param stack
+ * @return {@code 0} if SqList is not empty
+ *   while {@code 1} if SqList is empty
+ */
+int isStackEmpty(LinkedStack top) {
+    if (top == NULL) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+/** push new item into the stack
+ *
+ * @param stack
+ * @param newItem
+ * @return {@code 0} if insert operation fail
+ *   while {@code 1} if insert operation success
+ */
+int push(LinkedStack top, int newItem) {
+    StackNode *stackNode;
+    stackNode = (StackNode *) malloc(sizeof(StackNode));
+    stackNode->item = newItem;
+    stackNode->next = top->next;
+    top->next = stackNode;
+    return 1;
+}
+
+/** delete item with specific position
+ *
+ * @param top
+ * @param poppedItem
+ * @return {@code 0} if delete operation fail
+ *   while {@code 1} if delete operation success
+ */
+int pop(LinkedStack top, int *poppedItem) {
+    if (top->next == NULL) {
+        printf("cannot pop because the stack is empty ");
+        return 0;
+    }
+    StackNode *stackNode = top->next;
+    *poppedItem = (stackNode)->item;
+    top->next = stackNode->next;
+    free(stackNode);
+    return 1;
+}
+
+/** get top item of the linked stack
+ *
+ * @param top
+ * @param topItem
+ * @return {@code 0} if getItem operation fail
+ *   while {@code 1} if getItem operation success
+ */
+int getTop(LinkedStack top, int *topItem) {
+    if (top->next == NULL) {
+        printf("the linked stack is empty");
+        return 0;
+    }
+    *topItem = (top->next)->item;
+    return 1;
+}
+
+int main() {
+    LinkedStack stackA;
+    initList(&stackA);
+    for (int i = 1; i <= 5; i++) {
+        printf("push the item %d, ", i * i * i);
+        push(stackA, i * i * i);
+        int topItem;
+        if (getTop(stackA, &topItem)){
+            printf("now the top item is %d\n", topItem);
+        }
+    }
+    printf("----------\n");
+    for (int i = 1; i <= 5; i++) {
+        int poppedItem;
+        pop(stackA, &poppedItem);
+        printf("pop the item %d ", poppedItem);
+        int topItem;
+        if (getTop(stackA, &topItem)){
+            printf("now the top item is %d\n", topItem);
+        }
+    }
+}
+
+
+
+
+
+

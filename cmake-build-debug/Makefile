@@ -123,32 +123,32 @@ c/fast:
 	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/build
 .PHONY : c/fast
 
-linkedList.o: linkedList.c.o
+exp3/BinaryTree.o: exp3/BinaryTree.c.o
 
-.PHONY : linkedList.o
+.PHONY : exp3/BinaryTree.o
 
 # target to build an object file
-linkedList.c.o:
-	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/linkedList.c.o
-.PHONY : linkedList.c.o
+exp3/BinaryTree.c.o:
+	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp3/BinaryTree.c.o
+.PHONY : exp3/BinaryTree.c.o
 
-linkedList.i: linkedList.c.i
+exp3/BinaryTree.i: exp3/BinaryTree.c.i
 
-.PHONY : linkedList.i
+.PHONY : exp3/BinaryTree.i
 
 # target to preprocess a source file
-linkedList.c.i:
-	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/linkedList.c.i
-.PHONY : linkedList.c.i
+exp3/BinaryTree.c.i:
+	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp3/BinaryTree.c.i
+.PHONY : exp3/BinaryTree.c.i
 
-linkedList.s: linkedList.c.s
+exp3/BinaryTree.s: exp3/BinaryTree.c.s
 
-.PHONY : linkedList.s
+.PHONY : exp3/BinaryTree.s
 
 # target to generate assembly for a file
-linkedList.c.s:
-	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/linkedList.c.s
-.PHONY : linkedList.c.s
+exp3/BinaryTree.c.s:
+	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp3/BinaryTree.c.s
+.PHONY : exp3/BinaryTree.c.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... c"
-	@echo "... linkedList.o"
-	@echo "... linkedList.i"
-	@echo "... linkedList.s"
+	@echo "... exp3/BinaryTree.o"
+	@echo "... exp3/BinaryTree.i"
+	@echo "... exp3/BinaryTree.s"
 .PHONY : help
 
 

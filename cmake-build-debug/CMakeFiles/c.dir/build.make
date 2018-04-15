@@ -57,38 +57,38 @@ include CMakeFiles/c.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/c.dir/flags.make
 
-CMakeFiles/c.dir/linkedList.c.o: CMakeFiles/c.dir/flags.make
-CMakeFiles/c.dir/linkedList.c.o: ../linkedList.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/e/c/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/c.dir/linkedList.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/c.dir/linkedList.c.o   -c /cygdrive/e/c/linkedList.c
+CMakeFiles/c.dir/exp3/BinaryTree.c.o: CMakeFiles/c.dir/flags.make
+CMakeFiles/c.dir/exp3/BinaryTree.c.o: ../exp3/BinaryTree.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/e/c/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/c.dir/exp3/BinaryTree.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/c.dir/exp3/BinaryTree.c.o   -c /cygdrive/e/c/exp3/BinaryTree.c
 
-CMakeFiles/c.dir/linkedList.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/c.dir/linkedList.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /cygdrive/e/c/linkedList.c > CMakeFiles/c.dir/linkedList.c.i
+CMakeFiles/c.dir/exp3/BinaryTree.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/c.dir/exp3/BinaryTree.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /cygdrive/e/c/exp3/BinaryTree.c > CMakeFiles/c.dir/exp3/BinaryTree.c.i
 
-CMakeFiles/c.dir/linkedList.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/c.dir/linkedList.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /cygdrive/e/c/linkedList.c -o CMakeFiles/c.dir/linkedList.c.s
+CMakeFiles/c.dir/exp3/BinaryTree.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/c.dir/exp3/BinaryTree.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /cygdrive/e/c/exp3/BinaryTree.c -o CMakeFiles/c.dir/exp3/BinaryTree.c.s
 
-CMakeFiles/c.dir/linkedList.c.o.requires:
+CMakeFiles/c.dir/exp3/BinaryTree.c.o.requires:
 
-.PHONY : CMakeFiles/c.dir/linkedList.c.o.requires
+.PHONY : CMakeFiles/c.dir/exp3/BinaryTree.c.o.requires
 
-CMakeFiles/c.dir/linkedList.c.o.provides: CMakeFiles/c.dir/linkedList.c.o.requires
-	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/linkedList.c.o.provides.build
-.PHONY : CMakeFiles/c.dir/linkedList.c.o.provides
+CMakeFiles/c.dir/exp3/BinaryTree.c.o.provides: CMakeFiles/c.dir/exp3/BinaryTree.c.o.requires
+	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp3/BinaryTree.c.o.provides.build
+.PHONY : CMakeFiles/c.dir/exp3/BinaryTree.c.o.provides
 
-CMakeFiles/c.dir/linkedList.c.o.provides.build: CMakeFiles/c.dir/linkedList.c.o
+CMakeFiles/c.dir/exp3/BinaryTree.c.o.provides.build: CMakeFiles/c.dir/exp3/BinaryTree.c.o
 
 
 # Object files for target c
 c_OBJECTS = \
-"CMakeFiles/c.dir/linkedList.c.o"
+"CMakeFiles/c.dir/exp3/BinaryTree.c.o"
 
 # External object files for target c
 c_EXTERNAL_OBJECTS =
 
-c.exe: CMakeFiles/c.dir/linkedList.c.o
+c.exe: CMakeFiles/c.dir/exp3/BinaryTree.c.o
 c.exe: CMakeFiles/c.dir/build.make
 c.exe: CMakeFiles/c.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/e/c/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable c.exe"
@@ -99,7 +99,7 @@ CMakeFiles/c.dir/build: c.exe
 
 .PHONY : CMakeFiles/c.dir/build
 
-CMakeFiles/c.dir/requires: CMakeFiles/c.dir/linkedList.c.o.requires
+CMakeFiles/c.dir/requires: CMakeFiles/c.dir/exp3/BinaryTree.c.o.requires
 
 .PHONY : CMakeFiles/c.dir/requires
 

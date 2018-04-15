@@ -1,0 +1,143 @@
+//
+// Created by percycrn on 2018/3/26.
+//
+#include "stdio.h"
+
+#define STACKSIZE 100
+
+// stack data structure
+typedef struct {
+    int items[STACKSIZE];
+    int top;
+} Stack;
+
+/** initialize the stack
+ *
+ * @param stack
+ * @return {@code 1} if the function works well
+ */
+int initList(Stack *stack) {
+    // we use a pointer here to assign the length
+    stack->top = -1;
+    return 1;
+}
+
+/** get size of Stack
+ *
+ * @param stack
+ * @return the length of the Stack
+ */
+int getLength(Stack stack) {
+    return stack.top + 1;
+}
+
+/** judge whether the Stack is empty or not
+ *
+ * @param stack
+ * @return {@code 0} if SqList is not empty
+ *   while {@code 1} if SqList is empty
+ */
+int isStackEmpty(Stack stack) {
+    if (stack.top == -1) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+/** push new item into the stack
+ *
+ * @param stack
+ * @param newItem
+ * @return {@code 0} if insert operation fail
+ *   while {@code 1} if insert operation success
+ */
+int push(Stack *stack, int newItem) {
+    if (stack->top >= STACKSIZE) {
+        printf("cannot push new item because the stack is full");
+        return 0;
+    }
+    stack->top++;
+    stack->items[stack->top] = newItem;
+    return 1;
+}
+
+/** delete item with specific position
+ *
+ * @param stack
+ * @param poppedItem
+ * @return {@code 0} if delete operation fail
+ *   while {@code 1} if delete operation success
+ */
+int pop(Stack *stack, int *poppedItem) {
+    if (stack->top <= -1) {
+        printf("cannot pop because the stack is empty");
+        return 0;
+    }
+    *poppedItem = stack->items[stack->top];
+    stack->top--;
+    return 1;
+}
+
+/** get top item of the linked stack
+ *
+ * @param stack
+ * @param topItem
+ * @return {@code 0} if getItem operation fail
+ *   while {@code 1} if getItem operation success
+ */
+int getTop(Stack *stack, int *topItem) {
+    if (stack->top <= -1) {
+        printf("cannot get top item because the stack is empty");
+        return 0;
+    }
+    *topItem = stack->items[stack->top];
+    return 1;
+}
+
+int main() {
+    Stack stackA;
+    initList(&stackA);
+    for (int i = 1; i <= 5; i++) {
+        printf("push the item %d, ", i * i);
+        push(&stackA, i * i);
+        int topItem;
+        if (getTop(&stackA, &topItem)){
+            printf("now the top item is %d\n", topItem);
+        }
+    }
+    printf("-------------\n");
+    for (int i = 1; i <= 5; i++) {
+        int poppedItem;
+        pop(&stackA, &poppedItem);
+        printf("pop the item %d ", poppedItem);
+        int topItem;
+        if (getTop(&stackA, &topItem)){
+            printf("now the top item is %d\n", topItem);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

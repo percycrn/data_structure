@@ -1,0 +1,155 @@
+//
+// Created by percycrn on 2018/3/31.
+//
+#include "stdio.h"
+#include "stdlib.h"
+
+// queue data structure
+typedef struct QNode {
+    int data;
+    struct QNode *next;
+} LQNode, *PQNode;
+
+typedef struct {
+    PQNode front, rear;
+} LinkQueue;
+
+/** initialize the queue
+ *
+ * @param linkQueue
+ * @return {@code 1} if the function works well
+ */
+int initQueue(LinkQueue *linkQueue) {
+    linkQueue->front = (PQNode) malloc(sizeof(LQNode));
+    linkQueue->rear = linkQueue->front;
+    if (!linkQueue->front) {
+        printf("fail to initialize the queue\n");
+    }
+    linkQueue->front->next = NULL;
+    return 1;
+}
+
+/** judge whether the Stack is empty or not
+ *
+ * @param linkQueue
+ * @return {@code 0} if linkQueue is not empty
+ *   while {@code 1} if linkQueue is empty
+ */
+int isQueueEmpty(LinkQueue linkQueue) {
+    if (linkQueue.front == linkQueue.rear) {
+        return 1;
+    }
+    return 0;
+}
+
+/** enqueue
+ *
+ * @param linkQueue
+ * @param newItem
+ * @return {@code 0} if enqueue operation fail
+ *   while {@code 1} if enqueue operation success
+ */
+int enQueue(LinkQueue *linkQueue, int newItem) {
+    PQNode newNode = (PQNode) malloc(sizeof(LQNode));
+    if (!newNode) {
+        printf("fail to distribute the memory to new node");
+        return 0;
+    }
+    newNode->data = newItem;
+    newNode->next = NULL;
+    (linkQueue->rear)->next = newNode;
+    linkQueue->rear = newNode;
+    return 1;
+}
+
+/** deQueue
+ * front始终不变，删除的始终是front之后的结点
+ * @param list
+ * @param position
+ * @param item
+ * @return {@code 0} if delete operation fail
+ *   while {@code 1} if delete operation success
+ */
+int deQueue(LinkQueue *linkQueue, int *deQueueItem) {
+    if (linkQueue->rear == linkQueue->front) {
+        printf("fail to deQueue because the queue is empty");
+        return 0;
+    }
+    // 新建结点为front下一个结点
+    PQNode deleteNode = (linkQueue->front)->next;
+    *deQueueItem = deleteNode->data;
+    // 使结点出队列
+    (linkQueue->front)->next = deleteNode->next;
+    // 如果删去的结点是rear，也就是最后一个，则改变rear指针
+    if (linkQueue->rear == deleteNode) {
+        linkQueue->rear = linkQueue->front;
+    }
+    free(deleteNode);
+    return 1;
+}
+
+/** destroy queue
+ *
+ * @param topItem
+ * @return {@code 0} if getItem operation fail
+ *   while {@code 1} if getItem operation success
+ */
+int destroyQueue(LinkQueue *linkQueue) {
+    while (linkQueue->front) {
+        linkQueue->rear = (linkQueue->front)->next;
+        free(linkQueue->front);
+        linkQueue->front = linkQueue->rear;
+    }
+    return 1;
+}
+
+int printQueue(LinkQueue linkQueue) {
+    PQNode pointer = (linkQueue.front)->next;
+    while (pointer) {
+        printf("%d ", pointer->data);
+        pointer = pointer->next;
+    }
+    printf("\n");
+    return 1;
+}
+
+int main() {
+    LinkQueue linkQueue;
+    initQueue(&linkQueue);
+    printf("依次入队列\n");
+    for (int i = 0; i < 5; i++) {
+        enQueue(&linkQueue, i * i * i);
+        printQueue(linkQueue);
+    }
+    printf("依次出队列\n");
+    int deleteItem;
+    for (int i = 0; i <= 5; i++) {
+        deQueue(&linkQueue, &deleteItem);
+        printQueue(linkQueue);
+    }
+    destroyQueue(&linkQueue);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

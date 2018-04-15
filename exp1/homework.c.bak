@@ -1,0 +1,82 @@
+/*
+ * Created by percycrn on 2018/3/31.
+ * 两个单链表A和B，分别表示两个集合，其元素按递增排列，
+ * 编写一个C函数求A和B的交集D，D中的元素也按递增排列（D用带头结点的单链表表示）
+ */
+#include "stdio.h"
+#include "stdlib.h"
+
+typedef struct Node {
+    int data;
+    struct Node *next;
+} Node, *LinkedList;
+
+void initList(LinkedList *linkedList) {
+    *linkedList = (LinkedList) malloc(sizeof(Node));
+    (*linkedList)->next = NULL;
+}
+
+int insert(LinkedList linkedList, int data) {
+    LinkedList pointer = linkedList->next;
+    if (pointer == NULL || pointer->data > data) {
+        LinkedList newNode = (LinkedList) malloc(sizeof(Node));
+        newNode->next = pointer;
+        newNode->data = data;
+        linkedList->next = newNode;
+        return 1;
+    }
+    while (pointer->next != NULL && (pointer->next)->data < data) {
+        pointer = pointer->next;
+    }
+    LinkedList newNode = (LinkedList) malloc(sizeof(Node));
+    newNode->data = data;
+    newNode->next = pointer->next;
+    pointer->next = newNode;
+    return 1;
+}
+
+int printList(LinkedList linkedList) {
+    LinkedList pointer = linkedList->next;
+    while (pointer != NULL) {
+        printf("%d ", pointer->data);
+        pointer = pointer->next;
+    }
+    printf("\n");
+    return 1;
+}
+
+int createListC(LinkedList listA, LinkedList listB, LinkedList listC) {
+    LinkedList pA = listA->next, pB = listB->next, pC = listC->next;
+    while (pA != NULL && pB != NULL) {
+        if (pA->data == pB->data) {
+            insert(listC, pA->data);
+            pA = pA->next;
+            pB = pB->next;
+        } else if (pA->data > pB->data) {
+            pB = pB->next;
+        } else {
+            pA = pA->next;
+        }
+    }
+}
+
+int main() {
+    LinkedList listA, listB, listC;
+    initList(&listA);
+    initList(&listB);
+    initList(&listC);
+    insert(listA, 4);
+    insert(listA, 3);
+    insert(listA, 7);
+    insert(listA, 10);
+    insert(listA, 5);
+
+    insert(listB, 4);
+    insert(listB, 100);
+    insert(listB, 5);
+    insert(listB, 9);
+    insert(listB, 10);
+
+    createListC(listA, listB, listC);
+    printList(listC);
+}

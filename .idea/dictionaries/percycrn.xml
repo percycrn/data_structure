@@ -2,6 +2,8 @@
   <dictionary name="percycrn">
     <words>
       <w>percycrn</w>
+      <w>queuesize</w>
+      <w>stacksize</w>
     </words>
   </dictionary>
 </component>
