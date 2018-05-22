@@ -1,5 +1,5 @@
 //
-// Created by percycrn on 2018/3/22.
+// Created by Chen Ruonan on 2018/3/22.
 //
 #include <stdlib.h>
 #include "stdio.h"
@@ -10,21 +10,21 @@ typedef struct Node {
     struct Node *next;
 } LNode, *PNode, *linkedList;
 
-/** initialize linked list
- *
+/**
+ * initialize linked list
  * @param list
- * @return {@code 1} if the function works well
+ * @return {@code 1} if success to initialize the list
  */
 int initList(linkedList *list) {
     // create head pointer
     *list = (linkedList) malloc(sizeof(LNode));
-    (*list)->data = -1;
     (*list)->next = NULL;
+    printf("成功创建链表\n");
     return 1;
 }
 
-/** get size of linkedList
- *
+/**
+ * get the size of linkedList
  * @param *list
  * @return the length of the linkedList
  */
@@ -38,31 +38,32 @@ int getLength(linkedList list) {
     return count;
 }
 
-/** judge whether the linkedList is empty or not
- *
+/**
+ * judge whether the linkedList is empty or not
  * @param list
  * @return {@code 0} if linkedList is not empty
  *   while {@code 1} if linkedList is empty
  */
-int isListEmpty(linkedList list) {
-    if (list->next) {
+int isListEmpty(linkedList *list) {
+    if ((*list)->next) {
         return 1;
     } else {
         return 0;
     }
 }
 
-/** insert data into linkedList (before the position and the position starts from 1)
- *
+/**
+ * insert data into linkedList (before the position and the position starts from 1)
  * @param list
  * @param position
  * @param item
- * @return {@code 0} if insert operation fail
- *   while {@code 1} if insert operation success
+ * @return {@code 0} if insert operation fails
+ *   while {@code 1} if insert operation successes
  */
 int insert(linkedList list, int position, int item) {
     PNode pointer = list, newNode;
     int i = 0;
+    // find the position
     while (pointer && i < position - 1) {
         pointer = pointer->next;
         i++;
@@ -75,20 +76,22 @@ int insert(linkedList list, int position, int item) {
     newNode->data = item;
     newNode->next = pointer->next;
     pointer->next = newNode;
+    printf("插入新结点成功\n");
     return 1;
 }
 
-/** delete item with specific position
- *
+/**
+ * delete item from specific position
  * @param list
  * @param position
  * @param item
- * @return {@code 0} if delete operation fail
- *   while {@code 1} if delete operation success
+ * @return {@code 0} if delete operation fails
+ *   while {@code 1} if delete operation successes
  */
 int delete(linkedList list, int position, int *item) {
     PNode pointer = list, afterPosition;
     int i = 0;
+    // find the position
     while (pointer->next && i < position - 1) {
         pointer = pointer->next;
         i++;
@@ -101,11 +104,12 @@ int delete(linkedList list, int position, int *item) {
     pointer->next = afterPosition->next;
     *item = afterPosition->data;
     free(afterPosition); // free the space of deleted item
+    printf("删除结点成功\n");
     return 1;
 }
 
-/** output the SqList
- *
+/**
+ * output the linked list
  * @param list
  */
 void printLinkedList(linkedList list) {
@@ -117,52 +121,86 @@ void printLinkedList(linkedList list) {
     printf("\n");
 }
 
-int main() {
-    linkedList listA;
-    initList(&listA);
-    printLinkedList(listA);
-    for (int i = 1; i <= 5; i++) {
-        insert(listA, i, i + 1);
+// global variable
+linkedList listA;
+
+void menu() {
+    printf("欢迎光临 链表操作界面!\n");
+    printf("您可以进行以下选择\n");
+    while (1) {
+        printf("\n");
+        printf("1.创建链表 2.插入元素 3.删除元素 4.打印链表 5.退出系统\n");
+        printf("请选择：");
+        int option; // 选项
+        int newItem; // 新结点值
+        int position; // 新结点带插入位置
+        // 当输入是字符或字符串时，会出现无限循环的现象，并未查明具体原因
+        scanf("%d", &option); // NOLINT
+        getchar();
+        switch (option) {
+            case 1:
+                if (listA != NULL) {
+                    printf("链表已初始化\n");
+                } else {
+                    initList(&listA);
+                }
+                break;
+            case 2:
+                if (listA == NULL) {
+                    printf("请先初始化链表\n");
+                    break;
+                }
+                while (1) {
+                    printf("请输入待插入位置及结点值: ");
+                    scanf("%d %d", &position, &newItem); // NOLINT
+                    if (position > getLength(listA) + 1 || position < 1) {
+                        printf("位置输入错误，请重新输入\n");
+                        continue;
+                    } else {
+                        break;
+                    }
+                }
+                insert(listA, position, newItem);
+                break;
+            case 3:
+                if (listA == NULL) {
+                    printf("请先初始化链表\n");
+                    break;
+                }
+                if (!isListEmpty(&listA)) {
+                    printf("链表为空无法删除");
+                    break;
+                }
+                while (1) {
+                    printf("请输入待删除结点位置");
+                    scanf("%d", &position); // NOLINT
+                    if (position > getLength(listA) || position < 1) {
+                        printf("位置输入错误，请重新输入\n");
+                        continue;
+                    } else {
+                        break;
+                    }
+                }
+                int deleteItem;
+                delete(listA, position, &deleteItem);
+                printf("删去的结点值为%d\n", deleteItem);
+                break;
+            case 4:
+                if (listA == NULL) {
+                    printf("请先初始化链表\n");
+                    break;
+                }
+                printLinkedList(listA);
+                break;
+            case 5:
+                return;
+            default:
+                printf("请正确输入选项\n");
+                break;
+        }
     }
-    printLinkedList(listA);
-    int deleteItem; // to store the deleted item
-    delete(listA, 2, &deleteItem);
-    printLinkedList(listA);
-    printf("deleted item is %d", deleteItem);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+int main() {
+    menu();
+}

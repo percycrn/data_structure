@@ -8,19 +8,18 @@ typedef struct {
     int length;
 } SqList;
 
-/** initialize the sequence list
- *
+/**
+ * initialize the sequence list
  * @param list
  * @return {@code 1} if the function works well
  */
 int initList(SqList *list) {
-    // we use a pointer here to assign the length
     list->length = 0;
     return 1;
 }
 
-/** get size of SqList
- *
+/**
+ * get the size of SqList
  * @param *list
  * @return the length of the SqList
  */
@@ -29,8 +28,8 @@ int getLength(SqList *list) {
     return list->length;
 }
 
-/** judge whether the SqList is empty or not
- *
+/**
+ * judge whether the SqList is empty or not
  * @param list
  * @return {@code 0} if SqList is not empty
  *   while {@code 1} if SqList is empty
@@ -43,8 +42,8 @@ int isListEmpty(SqList list) {
     }
 }
 
-/** insert data into SqList (before the position and the position starts from 1)
- *
+/**
+ * insert data into SqList (before the position and the position starts from 1)
  * @param list
  * @param position
  * @param item
@@ -69,8 +68,8 @@ int insert(SqList *list, int position, int item) {
     return 1;
 }
 
-/** delete item with specific position
- *
+/**
+ * delete item from specific position
  * @param list
  * @param position
  * @param item
@@ -95,51 +94,80 @@ int delete(SqList *list, int position, int *item) {
     return 1;
 }
 
-/** output the SqList
- *
+/**
+ * output the SqList
  * @param list
  */
-void printSqList(SqList *list) {
+void printSqList(SqList list) {
     int i;
-    for (i = 0; i < list->length; i++) {
-        printf("%d ", list->items[i]);
+    for (i = 0; i < list.length; i++) {
+        printf("%d ", list.items[i]);
     }
     printf("\n");
 }
 
-int main() {
-    SqList listA;
-    initList(&listA);
-    printSqList(&listA);
-    for (int i = 1; i <= 5; i++) {
-        insert(&listA, i, i);
+SqList listA;
+
+// 菜单
+void menu() {
+    printf("欢迎光临 顺序表操作界面!\n");
+    printf("您可以进行以下选择\n");
+    while (1) {
+        printf("\n");
+        printf("1.插入元素 2.删除元素 3.打印顺序表 4.退出系统\n");
+        printf("请选择：");
+        int option; // 选项
+        int newItem; // 新结点值
+        int position; // 新结点带插入位置
+        // 当输入是字符或字符串时，会出现无限循环的现象，并未查明具体原因
+        scanf("%d", &option); // NOLINT
+        getchar();
+        switch (option) {
+            case 1:
+                while (1) {
+                    printf("请输入待插入位置及结点值: ");
+                    scanf("%d %d", &position, &newItem); // NOLINT
+                    if (position > listA.length + 1 || position < 1) {
+                        printf("位置输入错误，请重新输入\n");
+                        continue;
+                    } else {
+                        break;
+                    }
+                }
+                insert(&listA, position, newItem);
+                break;
+            case 2:
+                if (listA.length == 0) {
+                    printf("顺序表为空无法删除");
+                    break;
+                }
+                while (1) {
+                    printf("请输入待删除结点位置");
+                    scanf("%d", &position); // NOLINT
+                    if (position > listA.length || position < 1) {
+                        printf("位置输入错误，请重新输入\n");
+                        continue;
+                    } else {
+                        break;
+                    }
+                }
+                int deleteItem;
+                delete(&listA, position, &deleteItem);
+                printf("删去的结点值为%d\n", deleteItem);
+                break;
+            case 3:
+                printSqList(listA);
+                break;
+            case 4:
+                return;
+            default:
+                printf("请正确输入选项\n");
+                break;
+        }
     }
-    printSqList(&listA);
-    int deleteItem; // to store the deleted item    delete(&listA, 4, &deleteItem);
-    printSqList(&listA);
-    printf("deleted item is %d", deleteItem);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+int main() {
+    initList(&listA);
+    menu();
+}

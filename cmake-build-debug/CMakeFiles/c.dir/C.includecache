@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/e/c/exp3/BinaryTree.c
+/cygdrive/e/c/exp4/AdjacencyMatrix.c
 stdio.h
-/cygdrive/e/c/exp3/stdio.h
-stdlib.h
-/cygdrive/e/c/exp3/stdlib.h
+/cygdrive/e/c/exp4/stdio.h
+string.h
+/cygdrive/e/c/exp4/string.h
 

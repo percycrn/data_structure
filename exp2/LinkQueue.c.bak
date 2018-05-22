@@ -12,6 +12,7 @@ typedef struct QNode {
 
 typedef struct {
     PQNode front, rear;
+    int length;
 } LinkQueue;
 
 /** initialize the queue
@@ -20,6 +21,7 @@ typedef struct {
  * @return {@code 1} if the function works well
  */
 int initQueue(LinkQueue *linkQueue) {
+    linkQueue->length = 0;
     linkQueue->front = (PQNode) malloc(sizeof(LQNode));
     linkQueue->rear = linkQueue->front;
     if (!linkQueue->front) {
@@ -37,9 +39,9 @@ int initQueue(LinkQueue *linkQueue) {
  */
 int isQueueEmpty(LinkQueue linkQueue) {
     if (linkQueue.front == linkQueue.rear) {
-        return 1;
+        return 0;
     }
-    return 0;
+    return 1;
 }
 
 /** enqueue
@@ -59,6 +61,7 @@ int enQueue(LinkQueue *linkQueue, int newItem) {
     newNode->next = NULL;
     (linkQueue->rear)->next = newNode;
     linkQueue->rear = newNode;
+    linkQueue->length++;
     return 1;
 }
 
@@ -85,6 +88,7 @@ int deQueue(LinkQueue *linkQueue, int *deQueueItem) {
         linkQueue->rear = linkQueue->front;
     }
     free(deleteNode);
+    linkQueue->length--;
     return 1;
 }
 
@@ -113,21 +117,51 @@ int printQueue(LinkQueue linkQueue) {
     return 1;
 }
 
+LinkQueue linkQueue;
+
+void menu() {
+    printf("欢迎光临 队列链表操作界面!\n");
+    printf("您可以进行以下选择\n");
+    while (1) {
+        printf("\n");
+        printf("1.插入元素 2.删除元素 3.打印队列链表 4.退出系统\n");
+        printf("请选择：");
+        int option; // 选项
+        int newItem; // 新结点值
+        // 当输入是字符或字符串时，会出现无限循环的现象，并未查明具体原因
+        scanf("%d", &option); // NOLINT
+        getchar();
+        switch (option) {
+            case 1:
+                printf("请输入新加入的元素：");
+                scanf("%d", &newItem); // NOLINT
+                enQueue(&linkQueue, newItem);
+                break;
+            case 2:
+                if (!isQueueEmpty(linkQueue)) {
+                    printf("链表为空无法删除");
+                    break;
+                }
+                int deleteItem;
+                deQueue(&linkQueue, &deleteItem);
+                printf("删去的结点值为%d\n", deleteItem);
+                break;
+            case 3:
+                printQueue(linkQueue);
+                break;
+            case 4:
+                destroyQueue(&linkQueue);
+                return;
+            default:
+                printf("请正确输入选项\n");
+                break;
+        }
+    }
+}
+
 int main() {
-    LinkQueue linkQueue;
     initQueue(&linkQueue);
-    printf("依次入队列\n");
-    for (int i = 0; i < 5; i++) {
-        enQueue(&linkQueue, i * i * i);
-        printQueue(linkQueue);
-    }
-    printf("依次出队列\n");
-    int deleteItem;
-    for (int i = 0; i <= 5; i++) {
-        deQueue(&linkQueue, &deleteItem);
-        printQueue(linkQueue);
-    }
-    destroyQueue(&linkQueue);
+    menu();
 }
 
 

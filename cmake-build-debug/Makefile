@@ -123,32 +123,32 @@ c/fast:
 	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/build
 .PHONY : c/fast
 
-exp3/BinaryTree.o: exp3/BinaryTree.c.o
+exp4/AdjacencyMatrix.o: exp4/AdjacencyMatrix.c.o
 
-.PHONY : exp3/BinaryTree.o
+.PHONY : exp4/AdjacencyMatrix.o
 
 # target to build an object file
-exp3/BinaryTree.c.o:
-	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp3/BinaryTree.c.o
-.PHONY : exp3/BinaryTree.c.o
+exp4/AdjacencyMatrix.c.o:
+	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp4/AdjacencyMatrix.c.o
+.PHONY : exp4/AdjacencyMatrix.c.o
 
-exp3/BinaryTree.i: exp3/BinaryTree.c.i
+exp4/AdjacencyMatrix.i: exp4/AdjacencyMatrix.c.i
 
-.PHONY : exp3/BinaryTree.i
+.PHONY : exp4/AdjacencyMatrix.i
 
 # target to preprocess a source file
-exp3/BinaryTree.c.i:
-	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp3/BinaryTree.c.i
-.PHONY : exp3/BinaryTree.c.i
+exp4/AdjacencyMatrix.c.i:
+	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp4/AdjacencyMatrix.c.i
+.PHONY : exp4/AdjacencyMatrix.c.i
 
-exp3/BinaryTree.s: exp3/BinaryTree.c.s
+exp4/AdjacencyMatrix.s: exp4/AdjacencyMatrix.c.s
 
-.PHONY : exp3/BinaryTree.s
+.PHONY : exp4/AdjacencyMatrix.s
 
 # target to generate assembly for a file
-exp3/BinaryTree.c.s:
-	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp3/BinaryTree.c.s
-.PHONY : exp3/BinaryTree.c.s
+exp4/AdjacencyMatrix.c.s:
+	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp4/AdjacencyMatrix.c.s
+.PHONY : exp4/AdjacencyMatrix.c.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... c"
-	@echo "... exp3/BinaryTree.o"
-	@echo "... exp3/BinaryTree.i"
-	@echo "... exp3/BinaryTree.s"
+	@echo "... exp4/AdjacencyMatrix.o"
+	@echo "... exp4/AdjacencyMatrix.i"
+	@echo "... exp4/AdjacencyMatrix.s"
 .PHONY : help
 
 

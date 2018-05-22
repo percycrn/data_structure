@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/c.dir/exp3/BinaryTree.c.o"
+  "CMakeFiles/c.dir/exp4/AdjacencyMatrix.c.o"
   "c.pdb"
   "c.exe"
   "libc.dll.a"

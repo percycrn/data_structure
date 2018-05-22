@@ -32,10 +32,10 @@ int initList(LinkedStack *top) {
  *   while {@code 1} if SqList is empty
  */
 int isStackEmpty(LinkedStack top) {
-    if (top == NULL) {
-        return 1;
-    } else {
+    if (top->next == NULL) {
         return 0;
+    } else {
+        return 1;
     }
 }
 
@@ -90,31 +90,55 @@ int getTop(LinkedStack top, int *topItem) {
     return 1;
 }
 
-int main() {
-    LinkedStack stackA;
-    initList(&stackA);
-    for (int i = 1; i <= 5; i++) {
-        printf("push the item %d, ", i * i * i);
-        push(stackA, i * i * i);
-        int topItem;
-        if (getTop(stackA, &topItem)){
-            printf("now the top item is %d\n", topItem);
-        }
-    }
-    printf("----------\n");
-    for (int i = 1; i <= 5; i++) {
-        int poppedItem;
-        pop(stackA, &poppedItem);
-        printf("pop the item %d ", poppedItem);
-        int topItem;
-        if (getTop(stackA, &topItem)){
-            printf("now the top item is %d\n", topItem);
+
+LinkedStack linkedStack;
+
+void menu() {
+    printf("欢迎光临 栈链表操作界面!\n");
+    printf("您可以进行以下选择\n");
+    while (1) {
+        printf("\n");
+        printf("1.入栈 2.出栈 3.获得栈顶元素 4.退出系统\n");
+        printf("请选择：");
+        int option; // 选项
+        int newItem; // 新结点值
+        // 当输入是字符或字符串时，会出现无限循环的现象，并未查明具体原因
+        scanf("%d", &option); // NOLINT
+        getchar();
+        switch (option) {
+            case 1:
+                printf("请输入入栈元素：");
+                scanf("%d", &newItem); // NOLINT
+                push(linkedStack, newItem);
+                break;
+            case 2:
+                if (!isStackEmpty(linkedStack)) {
+                    printf("栈链表为空无法删除");
+                    break;
+                }
+                int deleteItem;
+                pop(linkedStack, &deleteItem);
+                printf("出栈元素为%d\n", deleteItem);
+                break;
+            case 3:
+                if (!isStackEmpty(linkedStack)) {
+                    printf("栈链表为空");
+                    break;
+                }
+                int topItem;
+                getTop(linkedStack, &topItem);
+                printf("栈顶元素为%d\n", topItem);
+                break;
+            case 4:
+                return;
+            default:
+                printf("请正确输入选项\n");
+                break;
         }
     }
 }
 
-
-
-
-
-
+int main() {
+    initList(&linkedStack);
+    menu();
+}

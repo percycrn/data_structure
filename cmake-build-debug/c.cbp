@@ -101,7 +101,19 @@
 		<Unit filename="/cygdrive/e/c/exp2/StackLink.c.bak">
 			<Option target="c"/>
 		</Unit>
-		<Unit filename="/cygdrive/e/c/exp3/BinaryTree.c">
+		<Unit filename="/cygdrive/e/c/exp3/BinaryTree.c.bak">
+			<Option target="c"/>
+		</Unit>
+		<Unit filename="/cygdrive/e/c/exp4/AdjacencyMatrix.c">
+			<Option target="c"/>
+		</Unit>
+		<Unit filename="/cygdrive/e/c/zzl/LinkedQueue.c.bak">
+			<Option target="c"/>
+		</Unit>
+		<Unit filename="/cygdrive/e/c/zzl/LinkedStack.c.bak">
+			<Option target="c"/>
+		</Unit>
+		<Unit filename="/cygdrive/e/c/zzl/ZZLLinkedList.c.bak">
 			<Option target="c"/>
 		</Unit>
 		<Unit filename="/cygdrive/e/c/CMakeLists.txt">
