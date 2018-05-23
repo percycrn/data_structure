@@ -104,7 +104,13 @@
 		<Unit filename="/cygdrive/e/c/exp3/BinaryTree.c.bak">
 			<Option target="c"/>
 		</Unit>
-		<Unit filename="/cygdrive/e/c/exp4/AdjacencyMatrix.c">
+		<Unit filename="/cygdrive/e/c/exp4/AdjacencyMatrix.c.bak">
+			<Option target="c"/>
+		</Unit>
+		<Unit filename="/cygdrive/e/c/exp5/Search.c.bak">
+			<Option target="c"/>
+		</Unit>
+		<Unit filename="/cygdrive/e/c/exp6/sort.c">
 			<Option target="c"/>
 		</Unit>
 		<Unit filename="/cygdrive/e/c/zzl/LinkedQueue.c.bak">

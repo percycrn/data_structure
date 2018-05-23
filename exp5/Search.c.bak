@@ -1,0 +1,267 @@
+//
+// Created by percycrn on 2018/4/15.
+//
+#include "stdio.h"
+#include "stdlib.h"
+
+// binary tree data structure
+typedef struct Node {
+    int data;
+    struct Node *left;
+    struct Node *right;
+} BSTNode, *BSTree;
+
+BSTNode *search(BSTree bsTree, int x) {
+    BSTNode *p = bsTree;
+    if (bsTree == NULL) {
+        return NULL;
+    }
+    while (p != NULL) {
+        // 找到则输出
+        if (p->data == x) {
+            return p;
+        }
+        // 找右子树
+        if (p->data < x) {
+            p = p->right;
+        } else {
+            // 找左子树
+            p = p->left;
+        }
+    }
+    return NULL;
+}
+
+void insert(BSTree *bsTree, int data) {
+    BSTNode *p;
+    BSTNode *pre = NULL; // 指向p前面一个节点
+    p = *bsTree;
+    // 先查找是否有该元素
+    while (p != NULL) {
+        pre = p;
+        if (p->data == data) {
+            return;
+        }
+        if (p->data < data) {
+            p = p->right;
+        } else {
+            p = p->left;
+        }
+    }
+    // 未找到，则插入
+    p = (BSTNode *) malloc(sizeof(BSTNode));
+    p->data = data;
+    p->left = NULL;
+    p->right = NULL;
+    if (pre == NULL) {
+        *bsTree = p;
+        return;
+    }
+    if (pre->data > data) {
+        pre->left = p;
+    } else {
+        pre->right = p;
+    }
+}
+
+/**
+ * 中规中矩的方法
+ * @param bsTree
+ * @param data
+ */
+void delete(BSTree *bsTree, int data) {
+    BSTNode *p;
+    BSTNode *pre = NULL;
+    BSTNode *post = NULL;
+    p = *bsTree;
+    while (p != NULL && p->data != data) {
+        pre = p;
+        if (p->data > data) {
+            p = p->left;
+        } else {
+            p = p->right;
+        }
+    }
+    if (p == NULL) {
+        printf("未找到该节点");
+        return; // 未找到该元素
+    }
+    // 待删除节点左右节点都不存在
+    if (p->left == NULL && p->right == NULL) {
+        if (pre == NULL) { // 为头节点
+            *bsTree = pre;
+        } else if (pre->data > p->data) {
+            pre->left = NULL;
+        } else {
+            pre->right = NULL;
+        }
+        free(p);
+        return;
+    }
+    // 待删除节点左子树不在
+    if (p->left == NULL && p->right != NULL) {
+        if (pre == NULL) {
+            *bsTree = p->right;
+        } else if (pre->data > p->data) {
+            pre->left = p->right;
+        } else {
+            pre->right = p->right;
+        }
+        free(p);
+        return;
+    }
+    // 待删除节点左子树不在
+    if (p->left != NULL && p->right == NULL) {
+        if (pre == NULL) {
+            *bsTree = p->left;
+        } else if (pre->data > p->data) {
+            pre->left = p->left;
+        } else {
+            pre->right = p->left;
+        }
+        free(p);
+        return;
+    }
+    // 待删除节点左右都有孩子
+    // 如果从左子树中选，就应该选择左子树中最右边的那个叶子节点
+    // 如果从右子树中选，就应该选择有子树中最左边的那个叶子节点
+    // （这里肯定是叶子，如果不是叶子，那么就不是最右边的节点）
+    if (p->left != NULL && p->right != NULL) {
+        post = p->left;
+        while (post->right != NULL) {
+            post = post->right;
+        }
+        p->data = post->data;
+        free(post);
+    }
+}
+
+/**
+ * 复杂简短的方法
+ * @param r
+ * @param x
+ */
+void BSTDelete(BSTree *r, int x) {
+    BSTNode *p, *pre = NULL, *s;
+    p = *r;
+    while (p != NULL && p->data != x) {
+        pre = p;
+        if (p->data < x) {
+            p = p->right;
+        } else {
+            p = p->left;
+        }
+    }
+    // 未找到则返回
+    if (p == NULL) {
+        printf("未找到该节点");
+        return;
+    }
+    // 左右都有孩子的情况
+    s = p;
+    if (s->left && s->right) {
+        pre = s;
+        p = s->left;
+        // 如果从左子树中选，就应该选择左子树中最右边的那个叶子节点
+        while (p->right != NULL) {
+            pre = p;
+            p = p->right;
+        }
+        // 将该点值写入待删除节点，把该点删去。
+        // (并不是把待删除节点的点删去，而是改变了待删除点的值)
+        if (p != s) {
+            s->data = p->data;
+        }
+    }
+    s = (p->left) ? p->left : p->right;
+    /*被删结点为根结点，删除后应修改根指针*/
+    if (!pre) {
+        *r = s;
+    } else {
+        if (pre->left == p) {
+            pre->left = s;
+        } else {
+            pre->right = s;
+        }
+    }
+    free(p);
+}
+
+/**
+ * 先序遍历（递归）
+ * @param bsTree
+ */
+void preOrder(BSTree bsTree) {
+    if (bsTree != NULL) {
+        printf("%d ", bsTree->data);
+        preOrder(bsTree->left);
+        preOrder(bsTree->right);
+    }
+}
+
+/**
+ * 中序遍历
+ * @param bsTree
+ */
+void inOrder(BSTree bsTree) {
+    if (bsTree != NULL) {
+        inOrder(bsTree->left);
+        printf("%d ", bsTree->data);
+        inOrder(bsTree->right);
+    }
+}
+
+void menu(BSTree *bsTree) {
+    printf("欢迎光临 二叉树操作界面!\n");
+    printf("您可以进行以下选择\n");
+    while (1) {
+        printf("\n");
+        printf("1.插入元素 2.删除元素 3.查找元素 4.先序遍历 5.中序遍历 6.退出系统\n");
+        printf("请选择：");
+        int option; // 选项
+        int item;
+        BSTNode *searchNode;
+        // 当输入是字符或字符串时，会出现无限循环的现象，并未查明具体原因
+        scanf("%d", &option); // NOLINT
+        getchar();
+        switch (option) {
+            case 1:
+                printf("请输入带插入的元素：");
+                scanf("%d", &item); // NOLINT
+                insert(bsTree, item);
+                break;
+            case 2:
+                printf("请输入待删除的元素：");
+                scanf("%d", &item); // NOLINT
+                BSTDelete(bsTree, item);
+                break;
+            case 3:
+                printf("请输入带查找的元素：");
+                scanf("%d", &item); // NOLINT
+                searchNode = search(*bsTree, item);
+                if (searchNode != NULL) {
+                    printf("该元素存在");
+                } else {
+                    printf("该元素不存在");
+                }
+                break;
+            case 4:
+                preOrder(*bsTree);
+                break;
+            case 5:
+                inOrder(*bsTree);
+                break;
+            case 6:
+                return;
+            default:
+                printf("请正确输入选项\n");
+                break;
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    BSTree bsTree;
+    menu(&bsTree);
+}

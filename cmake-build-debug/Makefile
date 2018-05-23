@@ -123,32 +123,32 @@ c/fast:
 	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/build
 .PHONY : c/fast
 
-exp4/AdjacencyMatrix.o: exp4/AdjacencyMatrix.c.o
+exp6/sort.o: exp6/sort.c.o
 
-.PHONY : exp4/AdjacencyMatrix.o
+.PHONY : exp6/sort.o
 
 # target to build an object file
-exp4/AdjacencyMatrix.c.o:
-	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp4/AdjacencyMatrix.c.o
-.PHONY : exp4/AdjacencyMatrix.c.o
+exp6/sort.c.o:
+	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp6/sort.c.o
+.PHONY : exp6/sort.c.o
 
-exp4/AdjacencyMatrix.i: exp4/AdjacencyMatrix.c.i
+exp6/sort.i: exp6/sort.c.i
 
-.PHONY : exp4/AdjacencyMatrix.i
+.PHONY : exp6/sort.i
 
 # target to preprocess a source file
-exp4/AdjacencyMatrix.c.i:
-	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp4/AdjacencyMatrix.c.i
-.PHONY : exp4/AdjacencyMatrix.c.i
+exp6/sort.c.i:
+	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp6/sort.c.i
+.PHONY : exp6/sort.c.i
 
-exp4/AdjacencyMatrix.s: exp4/AdjacencyMatrix.c.s
+exp6/sort.s: exp6/sort.c.s
 
-.PHONY : exp4/AdjacencyMatrix.s
+.PHONY : exp6/sort.s
 
 # target to generate assembly for a file
-exp4/AdjacencyMatrix.c.s:
-	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp4/AdjacencyMatrix.c.s
-.PHONY : exp4/AdjacencyMatrix.c.s
+exp6/sort.c.s:
+	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp6/sort.c.s
+.PHONY : exp6/sort.c.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... c"
-	@echo "... exp4/AdjacencyMatrix.o"
-	@echo "... exp4/AdjacencyMatrix.i"
-	@echo "... exp4/AdjacencyMatrix.s"
+	@echo "... exp6/sort.o"
+	@echo "... exp6/sort.i"
+	@echo "... exp6/sort.s"
 .PHONY : help
 
 

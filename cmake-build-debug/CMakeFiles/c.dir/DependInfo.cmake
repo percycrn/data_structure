@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/cygdrive/e/c/exp4/AdjacencyMatrix.c" "/cygdrive/e/c/cmake-build-debug/CMakeFiles/c.dir/exp4/AdjacencyMatrix.c.o"
+  "/cygdrive/e/c/exp6/sort.c" "/cygdrive/e/c/cmake-build-debug/CMakeFiles/c.dir/exp6/sort.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

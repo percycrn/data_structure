@@ -6,9 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/e/c/exp4/AdjacencyMatrix.c
+/cygdrive/e/c/exp6/sort.c
 stdio.h
-/cygdrive/e/c/exp4/stdio.h
-string.h
-/cygdrive/e/c/exp4/string.h
+/cygdrive/e/c/exp6/stdio.h
 
