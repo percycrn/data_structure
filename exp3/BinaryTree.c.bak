@@ -1,10 +1,6 @@
-//
-// Created by percycrn on 2018/4/15.
-//
 #include "stdio.h"
 #include "stdlib.h"
 
-// binary tree data structure
 typedef struct Node {
     int data;
     struct Node *left;
@@ -34,29 +30,6 @@ BiTreeLink createBiTree(int *nodes, int position, int num) {
     return p;
 }
 
-PBTNode insertRight(PBTNode r, int data) {
-    if (!r) {
-        return NULL;
-    }
-    PBTNode p = (PBTNode) malloc(sizeof(BTNode));
-    p->data = data;
-    p->left = NULL;
-    p->right = r->right;
-    r->right = p;
-    return p;
-}
-
-PBTNode insertLeft(PBTNode l, int data) {
-    if (!l) {
-        return NULL;
-    }
-    PBTNode p = (PBTNode) malloc(sizeof(BTNode));
-    p->data = data;
-    p->left = l->left;
-    l->left = p;
-    return p;
-}
-
 /**
  * release the binary tree
  * @param r
@@ -69,24 +42,8 @@ void releaseTree(PBTNode *r) {
     }
 }
 
-void deleteRight(PBTNode r) {
-    if (!r) {
-        return;
-    }
-    releaseTree(&(r->right));
-    r->right = NULL;
-}
-
-void deleteLeft(PBTNode r) {
-    if (!r) {
-        return;
-    }
-    releaseTree(&(r->left));
-    r->left = NULL;
-}
-
 /**
- * 先序遍历（递归）
+ * 先序遍历
  * @param biTreeLink
  */
 void preOrder(BiTreeLink biTreeLink) {
@@ -94,27 +51,6 @@ void preOrder(BiTreeLink biTreeLink) {
         printf("%d ", biTreeLink->data);
         preOrder(biTreeLink->left);
         preOrder(biTreeLink->right);
-    }
-}
-
-/**
- * 先序遍历（非递归）
- * @param biTreeLink
- */
-void preOrder1(BiTreeLink biTreeLink) {
-    PBTNode root = biTreeLink;
-    PBTNode stack[20];
-    int i = 0;
-    stack[i++] = root;
-    while (i) {
-        PBTNode node = stack[--i];
-        printf("%d ", node->data);
-        if (node->right != NULL) {
-            stack[i++] = node->right;
-        }
-        if (node->left != NULL) {
-            stack[i++] = node->left;
-        }
     }
 }
 
@@ -223,6 +159,7 @@ void menu() {
                     break;
                 }
                 preOrder(biTreeLink);
+                printf("\n");
                 break;
             case 3:
                 if (biTreeLink == NULL) {
@@ -230,6 +167,7 @@ void menu() {
                     break;
                 }
                 inOrder(biTreeLink);
+                printf("\n");
                 break;
             case 4:
                 if (biTreeLink == NULL) {
@@ -237,6 +175,7 @@ void menu() {
                     break;
                 }
                 postOrder(biTreeLink);
+                printf("\n");
                 break;
             case 5:
                 return;

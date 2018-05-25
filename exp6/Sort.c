@@ -23,6 +23,11 @@ void insertSort(SqList sqList, int length) {
     }
 }
 
+/**
+ * 选择插入排序
+ * @param sqList
+ * @param length
+ */
 void selectSort(SqList sqList, int length) {
     int i, j, min;
     SortItem temp;

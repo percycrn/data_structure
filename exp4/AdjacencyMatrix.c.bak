@@ -3,9 +3,8 @@
 
 #define MAX 50 // 最大顶点个数
 #define QUEUESIZE 50
-typedef int weight; // 权值
 typedef struct {
-    weight matrix[MAX][MAX]; // 邻接矩阵
+    int matrix[MAX][MAX]; // 邻接矩阵
     int vertex[MAX]; // 顶点信息
     int visited[MAX]; // 用于遍历时判断是否被访问过，0表示未被访问过
     int numOfVertex; // 顶点数
@@ -20,7 +19,7 @@ typedef struct {
 SqQueue sqQueue;
 
 /** initialize the queue
- *
+ * to assist the solution of BSF
  * @param sqQueue
  * @return {@code 1} if the function works well
  */
@@ -98,11 +97,6 @@ void initGraph(AdjMatrix *adjMatrix) {
 void DFS(AdjMatrix *adjMatrix, int row) {
     for (int i = 0; i < adjMatrix->numOfVertex; i++) {
         if (adjMatrix->matrix[row][i] == 1 && adjMatrix->visited[i] == 0) {
-            // 先输出第一个值
-            if (adjMatrix->visited[row] == 0) {
-                printf("%d ", adjMatrix->vertex[row]);
-                adjMatrix->visited[row] = 1;
-            }
             printf("%d ", adjMatrix->vertex[i]);
             adjMatrix->visited[i] = 1;
             DFS(adjMatrix, i);
@@ -116,6 +110,7 @@ void BFS(AdjMatrix *adjMatrix) {
     while (!isQueueEmpty(sqQueue)) {
         int index = deQueue(&sqQueue);
         printf("%d ", adjMatrix->vertex[index]);
+        adjMatrix->visited[index] = 1;
         for (int i = 0; i < adjMatrix->numOfVertex; i++) {
             if (adjMatrix->matrix[index][i] == 1 && adjMatrix->visited[i] == 0) {
                 adjMatrix->visited[i] = 1;
@@ -165,6 +160,7 @@ void menu(AdjMatrix *adjMatrix) {
                 }
                 // 从第一个开始深度遍历
                 DFS(adjMatrix, 0);
+                printf("\n");
                 memset(adjMatrix->visited, 0, sizeof(adjMatrix->visited));
                 break;
             case 3:
@@ -173,6 +169,7 @@ void menu(AdjMatrix *adjMatrix) {
                     break;
                 }
                 BFS(adjMatrix);
+                printf("\n");
                 memset(adjMatrix->visited, 0, sizeof(adjMatrix->visited));
                 break;
             case 4:

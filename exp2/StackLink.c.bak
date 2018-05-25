@@ -1,10 +1,6 @@
-//
-// Created by percycrn on 2018/3/26.
-//
 #include <stdlib.h>
 #include "stdio.h"
 
-// stack data structure
 typedef struct StackNode {
     int item;
     struct StackNode *next;

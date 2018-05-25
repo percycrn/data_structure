@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/c.dir/exp6/sort.c.o"
+  "CMakeFiles/c.dir/exp6/Sort.c.o"
   "c.pdb"
   "c.exe"
   "libc.dll.a"

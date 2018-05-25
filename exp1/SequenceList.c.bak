@@ -2,7 +2,6 @@
 
 #define sequenceListSize 100
 
-// sequence list(SqList) data structure
 typedef struct {
     int items[sequenceListSize];
     int length;
@@ -16,16 +15,6 @@ typedef struct {
 int initList(SqList *list) {
     list->length = 0;
     return 1;
-}
-
-/**
- * get the size of SqList
- * @param *list
- * @return the length of the SqList
- */
-int getLength(SqList *list) {
-    // pointer or a variable is ok
-    return list->length;
 }
 
 /**
@@ -108,7 +97,6 @@ void printSqList(SqList list) {
 
 SqList listA;
 
-// 菜单
 void menu() {
     printf("欢迎光临 顺序表操作界面!\n");
     printf("您可以进行以下选择\n");

@@ -123,32 +123,32 @@ c/fast:
 	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/build
 .PHONY : c/fast
 
-exp6/sort.o: exp6/sort.c.o
+exp6/Sort.o: exp6/Sort.c.o
 
-.PHONY : exp6/sort.o
+.PHONY : exp6/Sort.o
 
 # target to build an object file
-exp6/sort.c.o:
-	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp6/sort.c.o
-.PHONY : exp6/sort.c.o
+exp6/Sort.c.o:
+	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp6/Sort.c.o
+.PHONY : exp6/Sort.c.o
 
-exp6/sort.i: exp6/sort.c.i
+exp6/Sort.i: exp6/Sort.c.i
 
-.PHONY : exp6/sort.i
+.PHONY : exp6/Sort.i
 
 # target to preprocess a source file
-exp6/sort.c.i:
-	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp6/sort.c.i
-.PHONY : exp6/sort.c.i
+exp6/Sort.c.i:
+	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp6/Sort.c.i
+.PHONY : exp6/Sort.c.i
 
-exp6/sort.s: exp6/sort.c.s
+exp6/Sort.s: exp6/Sort.c.s
 
-.PHONY : exp6/sort.s
+.PHONY : exp6/Sort.s
 
 # target to generate assembly for a file
-exp6/sort.c.s:
-	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp6/sort.c.s
-.PHONY : exp6/sort.c.s
+exp6/Sort.c.s:
+	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp6/Sort.c.s
+.PHONY : exp6/Sort.c.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... c"
-	@echo "... exp6/sort.o"
-	@echo "... exp6/sort.i"
-	@echo "... exp6/sort.s"
+	@echo "... exp6/Sort.o"
+	@echo "... exp6/Sort.i"
+	@echo "... exp6/Sort.s"
 .PHONY : help
 
 

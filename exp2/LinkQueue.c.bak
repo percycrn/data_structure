@@ -1,10 +1,6 @@
-//
-// Created by percycrn on 2018/3/31.
-//
 #include "stdio.h"
 #include "stdlib.h"
 
-// queue data structure
 typedef struct QNode {
     int data;
     struct QNode *next;
