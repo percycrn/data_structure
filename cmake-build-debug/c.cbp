@@ -101,16 +101,25 @@
 		<Unit filename="/cygdrive/e/c/exp2/StackLink.c.bak">
 			<Option target="c"/>
 		</Unit>
-		<Unit filename="/cygdrive/e/c/exp3/BinaryTree.c.bak">
+		<Unit filename="/cygdrive/e/c/exp3/BinaryTree.c">
 			<Option target="c"/>
 		</Unit>
 		<Unit filename="/cygdrive/e/c/exp4/AdjacencyMatrix.c.bak">
 			<Option target="c"/>
 		</Unit>
+		<Unit filename="/cygdrive/e/c/exp4/AdjacencyTable.c.bak">
+			<Option target="c"/>
+		</Unit>
+		<Unit filename="/cygdrive/e/c/exp5/BinarySearch.c.bak">
+			<Option target="c"/>
+		</Unit>
 		<Unit filename="/cygdrive/e/c/exp5/Search.c.bak">
 			<Option target="c"/>
 		</Unit>
-		<Unit filename="/cygdrive/e/c/exp6/Sort.c">
+		<Unit filename="/cygdrive/e/c/exp6/Sort.c.bak">
+			<Option target="c"/>
+		</Unit>
+		<Unit filename="/cygdrive/e/c/msx/DeleteNumber.c.bak">
 			<Option target="c"/>
 		</Unit>
 		<Unit filename="/cygdrive/e/c/zzl/LinkedQueue.c.bak">

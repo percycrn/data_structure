@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/cygdrive/e/c/exp6/Sort.c" "/cygdrive/e/c/cmake-build-debug/CMakeFiles/c.dir/exp6/Sort.c.o"
+  "/cygdrive/e/c/exp3/BinaryTree.c" "/cygdrive/e/c/cmake-build-debug/CMakeFiles/c.dir/exp3/BinaryTree.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

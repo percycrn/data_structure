@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/c.dir/exp6/Sort.c.o"
+  "CMakeFiles/c.dir/exp3/BinaryTree.c.o"
   "c.pdb"
   "c.exe"
   "libc.dll.a"

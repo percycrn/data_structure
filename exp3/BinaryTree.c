@@ -25,6 +25,9 @@ BiTreeLink createBiTree(int *nodes, int position, int num) {
         return 0;
     }
     p->data = nodes[position];
+    if (p->data == -1) {
+        return NULL;
+    }
     p->left = createBiTree(nodes, 2 * position, num);
     p->right = createBiTree(nodes, 2 * position + 1, num);
     return p;
@@ -132,8 +135,7 @@ void menu() {
         printf("1.创建二叉树 2.先序遍历 3.中序遍历 4.后序遍历 5.退出系统\n");
         printf("请选择：");
         int option; // 选项
-        int nodes[50]; // 新建节点数组
-        int num; // 节点数目
+        int nodes[100]; // 新建节点数组
         // 当输入是字符或字符串时，会出现无限循环的现象，并未查明具体原因
         scanf("%d", &option); // NOLINT
         getchar();
@@ -143,15 +145,17 @@ void menu() {
                     printf("已创建二叉树");
                     break;
                 }
-                printf("请输入节点数目: ");
-                scanf("%d", &num); // NOLINT
-                int length = num;
-                printf("请按左至右，上至下顺序输入值: ");
-                for (int i = 1; i <= length; i++) {
+                printf("请按照二叉树的层次从上至下，每层从左至右依次输入节点值，若某个节点为空，请输入-1代替，输入完毕请输入-2\n");
+                int num;
+                int length = 1; // 节点数目
+                while (length < 50) {
                     scanf("%d", &num); // NOLINT
-                    nodes[i] = num;
+                    if (num == -2) {
+                        break;
+                    }
+                    nodes[length++] = num;
                 }
-                biTreeLink = createBiTree(nodes, 1, length + 1);
+                biTreeLink = createBiTree(nodes, 1, length);
                 break;
             case 2:
                 if (biTreeLink == NULL) {

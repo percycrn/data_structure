@@ -123,32 +123,32 @@ c/fast:
 	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/build
 .PHONY : c/fast
 
-exp6/Sort.o: exp6/Sort.c.o
+exp3/BinaryTree.o: exp3/BinaryTree.c.o
 
-.PHONY : exp6/Sort.o
+.PHONY : exp3/BinaryTree.o
 
 # target to build an object file
-exp6/Sort.c.o:
-	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp6/Sort.c.o
-.PHONY : exp6/Sort.c.o
+exp3/BinaryTree.c.o:
+	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp3/BinaryTree.c.o
+.PHONY : exp3/BinaryTree.c.o
 
-exp6/Sort.i: exp6/Sort.c.i
+exp3/BinaryTree.i: exp3/BinaryTree.c.i
 
-.PHONY : exp6/Sort.i
+.PHONY : exp3/BinaryTree.i
 
 # target to preprocess a source file
-exp6/Sort.c.i:
-	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp6/Sort.c.i
-.PHONY : exp6/Sort.c.i
+exp3/BinaryTree.c.i:
+	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp3/BinaryTree.c.i
+.PHONY : exp3/BinaryTree.c.i
 
-exp6/Sort.s: exp6/Sort.c.s
+exp3/BinaryTree.s: exp3/BinaryTree.c.s
 
-.PHONY : exp6/Sort.s
+.PHONY : exp3/BinaryTree.s
 
 # target to generate assembly for a file
-exp6/Sort.c.s:
-	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp6/Sort.c.s
-.PHONY : exp6/Sort.c.s
+exp3/BinaryTree.c.s:
+	$(MAKE) -f CMakeFiles/c.dir/build.make CMakeFiles/c.dir/exp3/BinaryTree.c.s
+.PHONY : exp3/BinaryTree.c.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... c"
-	@echo "... exp6/Sort.o"
-	@echo "... exp6/Sort.i"
-	@echo "... exp6/Sort.s"
+	@echo "... exp3/BinaryTree.o"
+	@echo "... exp3/BinaryTree.i"
+	@echo "... exp3/BinaryTree.s"
 .PHONY : help
 
 

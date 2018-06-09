@@ -1,0 +1,141 @@
+#include<stdio.h>
+
+#define sequenceListSize 100
+
+typedef struct {
+    int items[sequenceListSize];
+    int length;
+} SqList;
+
+/**
+ * initialize the sequence list
+ * @param list
+ * @return {@code 1} if the function works well
+ */
+int initList(SqList *list) {
+    list->length = 0;
+    return 1;
+}
+
+/**
+ * judge whether the SqList is empty or not
+ * @param list
+ * @return {@code 0} if SqList is not empty
+ *   while {@code 1} if SqList is empty
+ */
+int isListEmpty(SqList list) {
+    if (list.length <= 0) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+/**
+ * insert data into SqList (before the position and the position starts from 1)
+ * @param list
+ * @param position
+ * @param item
+ * @return {@code 0} if insert operation fail
+ *   while {@code 1} if insert operation success
+ */
+int insert(SqList *list, int position, int item) {
+    int i;
+    if (list->length >= sequenceListSize) {
+        printf("cannot insert more data as the SqList is not available\n");
+        return 0;
+    }
+    if (position < 0 || position > list->length + 1) {
+        printf("cannot insert data as the position is out of bound\n");
+        return 0;
+    }
+    for (i = list->length - 1; i >= position - 1; i--) {
+        list->items[i + 1] = list->items[i];
+    }
+    list->items[position] = item;
+    return 1;
+}
+
+/**
+ * output the SqList
+ * @param list
+ */
+void printSqList(SqList list) {
+    int i;
+    for (i = 0; i < list.length; i++) {
+        printf("%d ", list.items[i]);
+    }
+    printf("\n");
+}
+
+void binarySearch(SqList list, int x) {
+    int low = 0, upper = list.length - 1, mid;
+    while (low <= upper) {
+        mid = (low + upper) / 2;
+        if (list.items[mid] == x) {
+            printf("查找到该元素，位置为顺序表的第%d个（从1开始）\n", mid + 1);
+            return;
+        }
+        if (list.items[mid] < x) {
+            low = mid + 1;
+        } else {
+            upper = mid - 1;
+        }
+    }
+    printf("顺序表中不存在该元素\n");
+}
+
+SqList listA;
+
+void menu() {
+    printf("欢迎光临 二分查找操作界面!\n");
+    printf("您可以进行以下选择\n");
+    while (1) {
+        printf("\n");
+        printf("1.新建一个顺序表 2.打印顺序表 3.二分查找 4.退出系统\n");
+        printf("请选择：");
+        int option; // 选项
+        int num; // 新结点值
+        int arr[50];
+        // 当输入是字符或字符串时，会出现无限循环的现象，并未查明具体原因
+        scanf("%d", &option); // NOLINT
+        getchar();
+        switch (option) {
+            case 1:
+                printf("请输入顺序表的长度：");
+                scanf("%d", &num); // NOLINT
+                listA.length = num;
+                printf("请输入一个顺序表：\n");
+                for (int i = 0; i < num; ++i) {
+                    scanf("%d", &arr[i]); // NOLINT
+                }
+                for (int j = 0; j < num; ++j) {
+                    insert(&listA, j, arr[j]);
+                }
+                break;
+            case 2:
+                if (isListEmpty(listA)) {
+                    printf("list is empty");
+                    break;
+                }
+                printSqList(listA);
+                break;
+            case 3:
+                printf("请输入想要查找的元素：");
+                int a;
+                scanf("%d", &a); // NOLINT
+                binarySearch(listA, a);
+                break;
+            case 4:
+                return;
+            default:
+                printf("请正确输入选项\n");
+                break;
+        }
+    }
+}
+
+int main() {
+    initList(&listA);
+    menu();
+}

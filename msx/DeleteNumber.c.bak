@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <string.h>
+
+#define SIZE 80
+
+void main() {
+    char s[SIZE];
+    int i = 0;
+    int count = 0;
+    for (int k = 0; k < SIZE; k++) {
+        s[k] = ' ';
+    }
+    printf("输入字符串：");
+    gets(s);
+    while (i != SIZE) {
+        if (s[i] >= '0' && s[i] <= '9') {
+            strcpy(s + i, s + i + 1);
+            count = count + 1;
+        } else {
+            i++;
+        }
+    }
+    printf("删除数字后的字符串：");
+    puts(s);
+    printf("删除的数字字符个数：%d", count);
+}

@@ -51,7 +51,7 @@ int push(LinkedStack top, int newItem) {
     return 1;
 }
 
-/** delete item with specific position
+/** pop the item
  *
  * @param top
  * @param poppedItem
